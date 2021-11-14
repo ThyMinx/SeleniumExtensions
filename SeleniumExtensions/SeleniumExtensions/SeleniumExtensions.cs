@@ -35,5 +35,17 @@ namespace SeleniumExt
             actions.MoveToElement(el);
             actions.Perform();
         }
+
+        /// <summary>
+        /// This uses javascript to remove the specified attribute from the specified IWebElement.
+        /// </summary>
+        /// <param name="driver">This is the IWebDriver that is currently being used.</param>
+        /// <param name="el">This is the IWebElement that you want to remove the attribute from.</param>
+        /// <param name="attr">This is the name of the attribute you want to remove.</param>
+        public static void RemoveAttribute(this IWebDriver driver, IWebElement el, string attr)
+        {
+            IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+            js.ExecuteScript("arguments[0].removeAttribute('arguments[1]')", el, attr);
+        }
     }
 }
